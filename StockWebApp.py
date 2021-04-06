@@ -174,7 +174,7 @@ def get_condition(exportList,rs_df, stock):
             # If all conditions above are true, add stock to exportList
             if (condition_1 and condition_2 and condition_3 and condition_4 and condition_5 and condition_6 and condition_7 and condition_8 and condition_9):
                 exportList = exportList.append(
-                    {'MÃ CỔ PHIẾU': st, 'CHỈ SỐ RS': RS_Rating, 'SMA50': moving_average_50, 'SMA150': moving_average_150,
+                    {'MÃ CỔ PHIẾU': st, 'GIÁ ĐÓNG CỬA': currentClose,'CHỈ SỐ RS': RS_Rating, 'SMA50': moving_average_50, 'SMA150': moving_average_150,
                         'SMA200': moving_average_200, 'ĐÁY 52 TUẦN': low_of_52week, 'ĐỈNH 52 TUẦN': high_of_52week},
                     ignore_index=True)
         except Exception as e:
