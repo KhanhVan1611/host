@@ -66,7 +66,7 @@ def get_ckhoan():
 # @st.cache(allow_output_mutation=True)
 def get_table():
     col_names = ["ID", "CK", "ISIN", "FIGI", "TENDOANHNGHIEP",
-                 "KLDANGKY_NIEMYET", "KL_LUUHANH", "NGAYNIEMYET"]
+                 "KLDANGKY_NIEMYET", "KHỐI LƯỢNG LƯU HÀNH", "NGAYNIEMYET"]
     df1 = pd.read_csv("table.csv", names=col_names)
     df1 = df1.drop(0).drop(columns=['ID', 'ISIN', "FIGI"])
     df1.reindex(columns=['CK'])
@@ -244,17 +244,17 @@ def get_condition_2(exportList2,rs_df, stock):
 def get_vonhoa(hose):
     hose['Gia_Khop'] = hose['Gia_Khop'].astype(float)
     hose['Thaydoi'] = hose['Thaydoi'].astype(float)
-    hose['KL_LUUHANH'] = hose['KL_LUUHANH'].apply( lambda x: float(x.replace('.', '').replace(',', '.')))
+    hose['KHỐI LƯỢNG LƯU HÀNH'] = hose['KHỐI LƯỢNG LƯU HÀNH'].apply( lambda x: float(x.replace('.', '').replace(',', '.')))
     # VONHOA column
-    hose['VONHOA'] = hose['Gia_Khop'] * hose['KL_LUUHANH']
+    hose['VONHOA'] = hose['Gia_Khop'] * hose['KHỐI LƯỢNG LƯU HÀNH']
     # Von hoa plot
-    vonhoa = hose[['CK', 'Gia_Khop', 'KL_LUUHANH', 'Thaydoi', 'VONHOA']].copy()
+    vonhoa = hose[['CK', 'Gia_Khop', 'KHỐI LƯỢNG LƯU HÀNH', 'Thaydoi', 'VONHOA']].copy()
     vonhoa = vonhoa.dropna()
     conditions = [(vonhoa['Thaydoi'] > 0), (vonhoa['Thaydoi'] < 0),(vonhoa['Thaydoi'] == 0)]
     values = ['Tăng giá', 'Giảm giá', 'Đứng giá']
     vonhoa['Biến động'] = np.select(conditions, values)
     area = vonhoa['VONHOA']
-    vonhoaplot = px.scatter(vonhoa, x='Gia_Khop', y='KL_LUUHANH',
+    vonhoaplot = px.scatter(vonhoa, x='Gia_Khop', y='KHỐI LƯỢNG LƯU HÀNH',
                             size=area, color='Biến động',
                             color_discrete_map={'Tăng giá': 'green', 'Giảm giá': 'red', 'Đứng giá': 'yellow'},
                             hover_name='CK')
