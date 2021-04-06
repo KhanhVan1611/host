@@ -54,7 +54,7 @@ st.set_page_config(page_title='Khuyến nghị giao dịch cổ phiếu', page_i
 def get_ckhoan():
     col_Names = ["CK", "Tran", "San", "TC",
                  "Giamua3", "KLmua3", "Giamua2", "KLmua2", "Giamua1", "KLmua1",
-                 "Gia_Khop", "Khoiluongkhoplenh", "Thaydoi", "Phantramthaydoi",
+                 "GIÁ KHỚP", "Khoiluongkhoplenh", "Thaydoi", "Phantramthaydoi",
                  "Giaban3", "KLban3", "Giaban2", "KLban2", "Giaban1", "KLban1"
                  "Caonhat", "Thapnhat", "TongKL",
                  "DTNNmua", "DTNNban", "DTNNdu"]
@@ -242,19 +242,19 @@ def get_condition_2(exportList2,rs_df, stock):
 # -=======================END OF GET_CONDITION_2====================================================#
 # @st.cache(allow_output_mutation=True)
 def get_vonhoa(hose):
-    hose['Gia_Khop'] = hose['Gia_Khop'].astype(float)
+    hose['GIÁ KHỚP'] = hose['GIÁ KHỚP'].astype(float)
     hose['Thaydoi'] = hose['Thaydoi'].astype(float)
     hose['KHỐI LƯỢNG LƯU HÀNH'] = hose['KHỐI LƯỢNG LƯU HÀNH'].apply( lambda x: float(x.replace('.', '').replace(',', '.')))
     # VONHOA column
-    hose['VONHOA'] = hose['Gia_Khop'] * hose['KHỐI LƯỢNG LƯU HÀNH']
+    hose['VONHOA'] = hose['GIÁ KHỚP'] * hose['KHỐI LƯỢNG LƯU HÀNH']
     # Von hoa plot
-    vonhoa = hose[['CK', 'Gia_Khop', 'KHỐI LƯỢNG LƯU HÀNH', 'Thaydoi', 'VONHOA']].copy()
+    vonhoa = hose[['CK', 'GIÁ KHỚP', 'KHỐI LƯỢNG LƯU HÀNH', 'Thaydoi', 'VONHOA']].copy()
     vonhoa = vonhoa.dropna()
     conditions = [(vonhoa['Thaydoi'] > 0), (vonhoa['Thaydoi'] < 0),(vonhoa['Thaydoi'] == 0)]
     values = ['Tăng giá', 'Giảm giá', 'Đứng giá']
     vonhoa['Biến động'] = np.select(conditions, values)
     area = vonhoa['VONHOA']
-    vonhoaplot = px.scatter(vonhoa, x='Gia_Khop', y='KHỐI LƯỢNG LƯU HÀNH',
+    vonhoaplot = px.scatter(vonhoa, x='GIÁ KHỚP', y='KHỐI LƯỢNG LƯU HÀNH',
                             size=area, color='Biến động',
                             color_discrete_map={'Tăng giá': 'green', 'Giảm giá': 'red', 'Đứng giá': 'yellow'},
                             hover_name='CK')
