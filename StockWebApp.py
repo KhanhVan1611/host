@@ -260,7 +260,7 @@ def get_vonhoa(hose):
                             hover_name='CK')
     
     vonhoaplot.update_layout(title='Vốn hoá', legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
-    vonhoaplot.update_layout(font_family="Courier New",font_color="", title_font_family="Times New Roman",
+    vonhoaplot.update_layout(font_family="Courier New",font_color="blue", title_font_family="Times New Roman",
                              title_font_color="red",
                              legend_title_font_color="green")
     return vonhoaplot
