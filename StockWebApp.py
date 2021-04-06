@@ -290,7 +290,7 @@ def get_dandat(hose):
     dandatplot.update_layout(barmode='group', xaxis_tickangle=-45)  
 #     dandatplot.update_layout( title='Nhóm dẫn dắt thị trường',autosize=False, xaxis_tickfont_size=12, yaxis=dict( title='Điểm ảnh hưởng', titlefont_size=12,tickfont_size=12,),
 #     legend=dict(x=1, y=1.02, bgcolor='rgba(255, 255, 255, 0)', bordercolor='rgba(255, 255, 255, 0)'))  
-    dandatplot.update_layout(font_family="Courier New",font_color="", title_font_family="Times New Roman",
+    dandatplot.update_layout(font_family="Courier New",font_color="blue", title_font_family="Times New Roman",
                              title_font_color="red",
                              legend_title_font_color="green")  
     return dandatplot
