@@ -252,10 +252,10 @@ def get_vonhoa(hose):
     vonhoa = vonhoa.dropna()
     conditions = [(vonhoa['Thaydoi'] > 0), (vonhoa['Thaydoi'] < 0),(vonhoa['Thaydoi'] == 0)]
     values = ['Tăng giá', 'Giảm giá', 'Đứng giá']
-    vonhoa['Biến động'] = np.select(conditions, values)
+    vonhoa['BIẾN ĐỘNG'] = np.select(conditions, values)
     area = vonhoa['VỐN HÓA THỊ TRƯỜNG']
     vonhoaplot = px.scatter(vonhoa, x='GIÁ KHỚP', y='KHỐI LƯỢNG LƯU HÀNH',
-                            size=area, color='Biến động',
+                            size=area, color='BIẾN ĐỘNG',
                             color_discrete_map={'Tăng giá': 'green', 'Giảm giá': 'red', 'Đứng giá': 'yellow'},
                             hover_name='CK')
     
