@@ -246,14 +246,14 @@ def get_vonhoa(hose):
     hose['Thaydoi'] = hose['Thaydoi'].astype(float)
     hose['KHỐI LƯỢNG LƯU HÀNH'] = hose['KHỐI LƯỢNG LƯU HÀNH'].apply( lambda x: float(x.replace('.', '').replace(',', '.')))
     # VONHOA column
-    hose['VONHOA'] = hose['GIÁ KHỚP'] * hose['KHỐI LƯỢNG LƯU HÀNH']
+    hose['VỐN HÓA THỊ TRƯỜNG'] = hose['GIÁ KHỚP'] * hose['KHỐI LƯỢNG LƯU HÀNH']
     # Von hoa plot
-    vonhoa = hose[['CK', 'GIÁ KHỚP', 'KHỐI LƯỢNG LƯU HÀNH', 'Thaydoi', 'VONHOA']].copy()
+    vonhoa = hose[['CK', 'GIÁ KHỚP', 'KHỐI LƯỢNG LƯU HÀNH', 'Thaydoi', 'VỐN HÓA THỊ TRƯỜNG']].copy()
     vonhoa = vonhoa.dropna()
     conditions = [(vonhoa['Thaydoi'] > 0), (vonhoa['Thaydoi'] < 0),(vonhoa['Thaydoi'] == 0)]
     values = ['Tăng giá', 'Giảm giá', 'Đứng giá']
     vonhoa['Biến động'] = np.select(conditions, values)
-    area = vonhoa['VONHOA']
+    area = vonhoa['VỐN HÓA THỊ TRƯỜNG']
     vonhoaplot = px.scatter(vonhoa, x='GIÁ KHỚP', y='KHỐI LƯỢNG LƯU HÀNH',
                             size=area, color='Biến động',
                             color_discrete_map={'Tăng giá': 'green', 'Giảm giá': 'red', 'Đứng giá': 'yellow'},
@@ -268,8 +268,8 @@ def get_vonhoa(hose):
 
 # @st.cache(allow_output_mutation=True)
 def get_dandat(hose):
-    hshort = hose[['CK', 'VONHOA', "Thaydoi"]].copy()
-    hshort['weights'] = hshort['VONHOA'].apply(lambda x: x/hshort['VONHOA'].sum())
+    hshort = hose[['CK', 'VỐN HÓA THỊ TRƯỜNG', "Thaydoi"]].copy()
+    hshort['weights'] = hshort['VỐN HÓA THỊ TRƯỜNG'].apply(lambda x: x/hshort['VỐN HÓA THỊ TRƯỜNG'].sum())
     hshort['DIEMANHHUONG'] = hshort["Thaydoi"]*hshort['weights']
     mask = hshort['DIEMANHHUONG'] < 0
     hshort['DIEMANHHUONGDUONG'] = hshort['DIEMANHHUONG'].mask(mask)
