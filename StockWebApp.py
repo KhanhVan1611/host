@@ -170,7 +170,7 @@ def get_condition(exportList,rs_df, stock):
             # Condition 8: Close price > Open Price
             condition_8 = currentClose > currentOpen
             # Condition 9 : Increase volume
-            condition_9 = Volume > (3 * Pre_volume) and currentClose >  1.02 * Pre_Close
+            condition_9 = Volume > (3 * Pre_volume) and currentClose >  1.01 * Pre_Close
             # If all conditions above are true, add stock to exportList
             if (condition_1 and condition_2 and condition_3 and condition_4 and condition_5 and condition_6 and condition_7 and condition_8 and condition_9):
                 exportList = exportList.append(
