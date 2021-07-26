@@ -74,7 +74,7 @@ def get_table():
 # -=======================END OF TABLE====================================================#
 # @st.cache(allow_output_mutation=True)
 def get_khuyen_nghi(ma):
-    stock = pd.read_csv('stock_file.csv')
+    stock = pd.read_csv('stock_file1.csv')
     stock.reindex(columns=['Date','Ticker'])  
 # stock = pd.read_csv('https://raw.githubusercontent.com/ThuPhuong2042/project/main/stock_file.csv')
     for i in range(1, len(stock['Date'])):
@@ -84,7 +84,7 @@ def get_khuyen_nghi(ma):
     stock['Date'] = pd.to_datetime(stock.Date)
     stock = stock.sort_values(by='Date', ascending=True)
     stock = stock.set_index('Date')
-    vni = pd.read_csv("vni_table.csv").drop(
+    vni = pd.read_csv("vni_table1.csv").drop(
         ['a', 'b', 'c', 'd'], axis=1).apply(lambda x: x.str.replace(',', '.'))
 #     vni = pd.read_csv("https://raw.githubusercontent.com/ThuPhuong2042/project/main/vni_table.csv").drop(
 #         ['a', 'b', 'c', 'd'], axis=1).apply(lambda x: x.str.replace(',', '.'))
