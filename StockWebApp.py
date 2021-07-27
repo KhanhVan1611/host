@@ -57,7 +57,7 @@ def get_ckhoan():
            "Giakhop","Khoiluongkhoplenh","Thaydoi","Phantramthaydoi",
            "Giaban1","KLban1","Giaban2","KLban2","Giaban3","KLban3",
            "TongKL", "Caonhat","Thapnhat","DTNNmua","DTNNban","DTNNdu"]
-    df = pd.read_csv("ckhoan.csv", names=col_Names)
+    df = pd.read_csv("ckhoan.csv", names = col_Names)
     df = df.drop(0)
     df.reindex(columns=['CK', 'Tran', 'San'])
     return df
