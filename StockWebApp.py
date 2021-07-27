@@ -54,7 +54,7 @@ st.set_page_config(page_title='Khuyến nghị giao dịch cổ phiếu', page_i
 def get_ckhoan():
     col_Names=["CK", "Tran", "San", "TC",
                  "Giamua3","KLmua3","Giamua2","KLmua2","Giamua1","KLmua1",
-                 "Giakhop","Khoiluongkhoplenh","Thaydoi","Phantramthaydoi",
+                 "GIÁ KHỚP","Khoiluongkhoplenh","Thaydoi","Phantramthaydoi",
                  "Giaban1","KLban1","Giaban2","KLban2","Giaban3","KLban3",
                  "TongKL", "Caonhat","Thapnhat","DTNNmua","DTNNban","DTNNdu"]
     df = pd.read_csv("ckhoan.csv", names = col_Names)
