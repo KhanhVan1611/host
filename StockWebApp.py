@@ -52,12 +52,11 @@ expList = pd.DataFrame(columns=['MÃ CỔ PHIẾU', 'GIÁ ĐÓNG CỬA', 'CHỈ 
 st.set_page_config(page_title='Khuyến nghị giao dịch cổ phiếu', page_icon=":shark:",layout="wide",initial_sidebar_state='collapsed')
 
 def get_ckhoan():
-    col_Names = ["CK", "Tran", "San", "TC",
-                 "Giamua3", "KLmua3", "Giamua2", "KLmua2", "Giamua1", "KLmua1",
-                 "GIÁ KHỚP", "Khoiluongkhoplenh", "Thaydoi", "Phantramthaydoi",
-                 "Giaban3", "KLban3", "Giaban2", "KLban2", "Giaban1", "KLban1"
-                 "Caonhat", "Thapnhat", "TongKL",
-                 "DTNNmua", "DTNNban", "DTNNdu"]
+      col_Names=["CK", "Tran", "San", "TC",
+           "Giamua3","KLmua3","Giamua2","KLmua2","Giamua1","KLmua1",
+           "Giakhop","Khoiluongkhoplenh","Thaydoi","Phantramthaydoi",
+           "Giaban1","KLban1","Giaban2","KLban2","Giaban3","KLban3",
+           "TongKL", "Caonhat","Thapnhat","DTNNmua","DTNNban","DTNNdu"]
     df = pd.read_csv("ckhoan.csv", names=col_Names)
     df = df.drop(0)
     df.reindex(columns=['CK', 'Tran', 'San'])
