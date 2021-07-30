@@ -181,7 +181,7 @@ def get_condition(exportList,rs_df, stock):
             print(f"Could not gather data on {st}")
     # currentClose
     exportList = exportList.sort_values(by='CHỈ SỐ RS', ascending=False)
-    exportList = exportList.loc[{4,6,13,19}]
+#     exportList = exportList.loc[{4,6,13,19}]
     return exportList
 
 # -=======================END OF GET_CONDITION====================================================#
@@ -353,6 +353,8 @@ def main():
     stock = t[1]
     # start = time.time()
     exportList = get_condition(expList,rs_df, stock)
+    st.write('exportList')
+    exportList = exportList.loc[{4,6,13,19}]
     # end = time.time()
     # print(end - start)
     exportList2 = get_condition_2(expList,rs_df, stock)
