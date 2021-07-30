@@ -353,7 +353,7 @@ def main():
     stock = t[1]
     # start = time.time()
     exportList = get_condition(expList,rs_df, stock)
-    st.write('exportList')
+    st.write('exportList:',exportList)
     exportList = exportList.loc[{4,6,13,19}]
     # end = time.time()
     # print(end - start)
