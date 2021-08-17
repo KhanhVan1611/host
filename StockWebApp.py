@@ -229,7 +229,7 @@ def get_condition(exportList,rs_df, stock):
             print(f"Could not gather data on {st}")
     # currentClose
     exportList = exportList.sort_values(by='CHỈ SỐ RS', ascending=False)
-#     exportList = exportList.loc[{1,2}]
+    exportList = exportList.loc[{1,2,3,4,5,7}]
     return exportList
 
 # -=======================END OF GET_CONDITION====================================================#
